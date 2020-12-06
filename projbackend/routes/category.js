@@ -5,20 +5,20 @@ const {
   getCategoryById,
   createCategory,
   getCategory,
-  getAllCategories,
+  getAllCategory,
   updateCategory,
-  removeCategory,
+  removeCategory
 } = require("../controllers/category");
+const { isSignedIn, isAdmin, isAuthenticated } = require("../controllers/auth");
 const { getUserById } = require("../controllers/user");
-const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth");
 
-//myparams
+//params
 router.param("userId", getUserById);
 router.param("categoryId", getCategoryById);
 
-//actual routes goes here
+//actual routers goes here
 
-//create route
+//create
 router.post(
   "/category/create/:userId",
   isSignedIn,
@@ -26,20 +26,22 @@ router.post(
   isAdmin,
   createCategory
 );
-//read routes
-router.get("/category/:categoryId", getCategory);
-router.get("/categoryies", getAllCategories);
 
-//update routes
+//read
+router.get("/category/:categoryId", getCategory);
+router.get("/categories", getAllCategory);
+
+//update
 router.put(
-  "/category/:creategoryId/:userId",
+  "/category/:categoryId/:userId",
   isSignedIn,
   isAuthenticated,
   isAdmin,
   updateCategory
 );
 
-//delete route
+//delete
+
 router.delete(
   "/category/:categoryId/:userId",
   isSignedIn,
@@ -47,7 +49,5 @@ router.delete(
   isAdmin,
   removeCategory
 );
-
-//mymiddleware
 
 module.exports = router;
