@@ -113,7 +113,7 @@ const Signup = () => {
       <div className="row">
         <div className="col-md-6 offset-sm-3 text-left">
           <div
-            className="alert alert-success"
+            className="alert alert-danger"
             style={{ display: error ? "" : "none" }}
           >
             {error}

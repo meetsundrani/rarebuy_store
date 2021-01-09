@@ -4,10 +4,21 @@ import { API } from "../backend";
 import Base from "./Base";
 
 export default function Home() {
-  console.log("API is", API);
+  console.log("API IS", API);
+
   return (
-    <Base title="Home Page" description="welcome to the tshirt store">
-      <h1 className="text-white text-center">Hello Frontend</h1>
+    <Base title="Home Page" description="Welcome to the Tshirt Store">
+      <div className="row">
+        <div className="col-4">
+          <button className="btn btn-success">TEST</button>
+        </div>
+        <div className="col-4">
+          <button className="btn btn-success">TEST</button>
+        </div>
+        <div className="col-4">
+          <button className="btn btn-success">TEST</button>
+        </div>
+      </div>
     </Base>
   );
 }
