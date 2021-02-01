@@ -1,8 +1,7 @@
 ## Project Name & Pitch
 Rarebuy store
 #### Example:
-
-rarebuy
+***Please Suggest better names for this project***
 
 An ecommerce application to shop Merchandise project, built with React, JavaScript, and CSS.
 
