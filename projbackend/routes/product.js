@@ -9,7 +9,7 @@ const {
   updateProduct,
   deleteProduct,
   getAllProducts,
-  getAllUniqueCategories,
+  getAllUniqueCategories
 } = require("../controllers/product");
 const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth");
 const { getUserById } = require("../controllers/user");
@@ -19,7 +19,7 @@ router.param("userId", getUserById);
 router.param("productId", getProductById);
 
 //all of actual routes
-//create
+//create route
 router.post(
   "/product/create/:userId",
   isSignedIn,
@@ -27,32 +27,32 @@ router.post(
   isAdmin,
   createProduct
 );
-//read product
+
+// read routes
 router.get("/product/:productId", getProduct);
-//optimized code for loading binary data
 router.get("/product/photo/:productId", photo);
 
-//update product
+//delete route
+router.delete(
+  "/product/:productId/:userId",
+  isSignedIn,
+  isAuthenticated,
+  isAdmin,
+  deleteProduct
+);
+
+//update route
 router.put(
   "/product/:productId/:userId",
-  isAdmin,
-  isAuthenticated,
   isSignedIn,
+  isAuthenticated,
+  isAdmin,
   updateProduct
 );
 
-//delete product
-router.delete(
-  "/product/:productId/:userId",
-  isAdmin,
-  isAuthenticated,
-  isSignedIn,
-  deleteProduct
-);
-module.exports = router;
-
-//listing all products
+//listing route
 router.get("/products", getAllProducts);
 
-//get allUniqueCategory
-router.get("products/categories", getAllUniqueCategories);
+router.get("/products/categories", getAllUniqueCategories);
+
+module.exports = router;

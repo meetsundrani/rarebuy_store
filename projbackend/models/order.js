@@ -4,11 +4,11 @@ const { ObjectId } = mongoose.Schema;
 const ProductCartSchema = new mongoose.Schema({
   product: {
     type: ObjectId,
-    ref: "Product",
+    ref: "Product"
   },
   name: String,
   count: Number,
-  price: Number,
+  price: Number
 });
 
 const ProductCart = mongoose.model("ProductCart", ProductCartSchema);
@@ -18,24 +18,17 @@ const OrderSchema = new mongoose.Schema(
     products: [ProductCartSchema],
     transaction_id: {},
     amount: { type: Number },
+    address: String,
     status: {
       type: String,
-      default: "Received",
-      enum: [
-        "Received",
-        "Dispatched",
-        "Delivered",
-        "InProcess",
-        "Shipped",
-        "Cancelled",
-      ],
+      default: "Recieved",
+      enum: ["Cancelled", "Delivered", "Shipped", "Processing", "Recieved"]
     },
-    address: String,
     updated: Date,
     user: {
       type: ObjectId,
-      ref: "User",
-    },
+      ref: "User"
+    }
   },
   { timestamps: true }
 );
