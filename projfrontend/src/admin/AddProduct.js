@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Base from "../core/Base";
-import { Link, Redirect } from "react-router-dom";
-import { createaProduct, getCategories } from "./helper/adminapicall";
+import { Link } from "react-router-dom";
+import { getCategories, createaProduct } from "./helper/adminapicall";
 import { isAutheticated } from "../auth/helper/index";
 
 const AddProduct = () => {
@@ -55,7 +55,7 @@ const AddProduct = () => {
     event.preventDefault();
     setValues({ ...values, error: "", loading: true });
     createaProduct(user._id, token, formData).then((data) => {
-      if (data?.error) {
+      if (data.error) {
         setValues({ ...values, error: data.error });
       } else {
         setValues({
@@ -86,15 +86,6 @@ const AddProduct = () => {
       <h4>{createdProduct} created successfully</h4>
     </div>
   );
-
-  // const warningMessage = () => (
-  //   <div
-  //     className="alert alert-danger mt-3"
-  //     style={{ display: !createdProduct ? "" : "none" }}
-  //   >
-  //     <h4>{createdProduct} Product not created successfully</h4>
-  //   </div>
-  // );
 
   const createProductForm = () => (
     <form>
@@ -184,7 +175,6 @@ const AddProduct = () => {
       <div className="row bg-dark text-white rounded">
         <div className="col-md-8 offset-md-2">
           {successMessage()}
-          {/* {warningMessage()} */}
           {createProductForm()}
         </div>
       </div>

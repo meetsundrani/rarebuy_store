@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+
+import Base from "../core/Base";
 import { Link } from "react-router-dom";
 import { isAutheticated } from "../auth/helper";
-import Base from "../core/Base";
-import { deleteProduct, getProducts } from "./helper/adminapicall";
+import { getProducts, deleteProduct } from "./helper/adminapicall";
 
 const ManageProducts = () => {
-  const [products, setproducts] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const { user, token } = isAutheticated();
 
@@ -14,22 +15,24 @@ const ManageProducts = () => {
       if (data.error) {
         console.log(data.error);
       } else {
-        setproducts(data);
+        setProducts(data);
       }
     });
   };
-  let deleteThisProduct = (productId) => {
+
+  useEffect(() => {
+    preload();
+  }, []);
+
+  const deleteThisProduct = (productId) => {
     deleteProduct(productId, user._id, token).then((data) => {
-      if (data?.error) {
+      if (data.error) {
         console.log(data.error);
       } else {
         preload();
       }
     });
   };
-  useEffect(() => {
-    preload();
-  }, []);
 
   return (
     <Base title="Welcome admin" description="Manage products here">
@@ -50,7 +53,7 @@ const ManageProducts = () => {
                 <div className="col-4">
                   <Link
                     className="btn btn-success"
-                    to={`/admin/product/update/productId`}
+                    to={`/admin/product/update/${product._id}`}
                   >
                     <span className="">Update</span>
                   </Link>
@@ -73,4 +76,5 @@ const ManageProducts = () => {
     </Base>
   );
 };
+
 export default ManageProducts;

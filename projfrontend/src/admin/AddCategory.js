@@ -3,7 +3,6 @@ import Base from "../core/Base";
 import { isAutheticated } from "../auth/helper";
 import { Link } from "react-router-dom";
 import { createCategory } from "./helper/adminapicall";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 const AddCategory = () => {
   const [name, setName] = useState("");
@@ -15,8 +14,7 @@ const AddCategory = () => {
   const goBack = () => (
     <div className="mt-5">
       <Link className="btn btn-sm btn-success mb-3" to="/admin/dashboard">
-        <ArrowBackIosIcon />
-        Home
+        Admin Home
       </Link>
     </div>
   );
@@ -32,28 +30,29 @@ const AddCategory = () => {
     setSuccess(false);
 
     //backend request fired
-    createCategory(user._id, token, { name })
-      .then((data) => {
-        if (data.error) {
-          setError(true);
-        } else {
-          setError("");
-          setSuccess(true);
-          setName("");
-        }
-      })
-      .catch((err) => console.log(err));
+    createCategory(user._id, token, { name }).then((data) => {
+      if (data.error) {
+        setError(true);
+      } else {
+        setError("");
+        setSuccess(true);
+        setName("");
+      }
+    });
   };
 
-  const successMsg = () => {
-    if (success)
-      return <h4 className="text-success">Category created successfully...</h4>;
+  const successMessage = () => {
+    if (success) {
+      return <h4 className="text-success">Category created successfully</h4>;
+    }
   };
 
-  const warningMsg = () => {
-    if (error)
-      return <h4 className="text-warning">Failed to create Category</h4>;
+  const warningMessage = () => {
+    if (error) {
+      return <h4 className="text-success">Failed to create category</h4>;
+    }
   };
+
   const myCategoryForm = () => (
     <form>
       <div className="form-group">
@@ -61,11 +60,11 @@ const AddCategory = () => {
         <input
           type="text"
           className="form-control my-3"
+          onChange={handleChange}
+          value={name}
           autoFocus
           required
           placeholder="For Ex. Summer"
-          onChange={handleChange}
-          value={name}
         />
         <button onClick={onSubmit} className="btn btn-outline-info">
           Create Category
@@ -82,9 +81,9 @@ const AddCategory = () => {
     >
       <div className="row bg-white rounded">
         <div className="col-md-8 offset-md-2">
+          {successMessage()}
+          {warningMessage()}
           {myCategoryForm()}
-          {successMsg()}
-          {warningMsg()}
           {goBack()}
         </div>
       </div>
