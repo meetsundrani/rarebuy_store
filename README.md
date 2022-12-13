@@ -1,5 +1,5 @@
 ## Project Name & Pitch
-Rarebuy store
+Shopmore
 #### Example:
 ***Please Suggest better names for this project***
 
