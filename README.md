@@ -40,6 +40,8 @@ This project is currently in development.
 
 #### Example:  
 
+visit in projfrontend folder open it vs code
+
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
 
 Installation:
@@ -58,3 +60,17 @@ To Visit App:
 
 `localhost:3000/`  
 
+## For Backend :-
+Open projbackend in another window of VS code
+
+Installation:
+
+'npm install'
+
+To start the server
+
+`npm start`
+
+To Visit App:
+
+`localhost:8000/
