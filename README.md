@@ -38,7 +38,7 @@ This project is currently in development.
 
 ## Installation and Setup Instructions
 
-#### For Frontend Local setup:  
+#### For Frontend setup:  
 
 visit in projfrontend folder open it vs code
 
@@ -60,7 +60,7 @@ To Visit App:
 
 `localhost:3000/`  
 
-## For Backend local setup :-
+### For Backend setup :-
 Open projbackend in another window of VS code
 
 Installation:
