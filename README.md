@@ -15,7 +15,8 @@ This project is currently in development.
 
 #### Example:   
 
-[ PRETEND SCREEN SHOT IS HERE ]
+![image](https://github.com/meetsundrani/rarebuy_store/assets/41486000/ec1517f4-369e-490e-8cc5-fd2f6bd45d04)
+
 
 [ PRETEND OTHER SCREEN SHOT IS HERE ]
 
